@@ -3,11 +3,17 @@ html {
     background-color:black;
 }
 h1 {
-    font-size: 140px;
+    font-size: 160px;
     text-align: center;
-    line-height: 50px;
+    line-height: 60px;
     color: white;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+h2 {
+    font-size: 45px;
+    color: white;
+    text-align: left;
+    margin: 1em 1em 1em 1em;
 }
 p.nav {
     color: white;
@@ -40,9 +46,17 @@ p.foot {
     font-family: Arial, Helvetica, sans-serif;
 }
 p.main {
-    color: black;
+    color: white;
     text-align: left;
     font-size: 40px;
+}
+p.article {
+    color: white;
+    background-color: black;
+    font-size: 35px;
+    text-indent: 2em;
+    line-height: 2em;
+    margin: 1em 1em 1em 1em;
 }
 #END {
     display: block;
