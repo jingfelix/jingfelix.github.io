@@ -1,0 +1,51 @@
+html {
+    font-size: 50px;
+    background-color:white;
+}
+h1 {
+    font-size: 160px;
+    text-align: center;
+    line-height: 50px;
+    color: white;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+p.nav {
+    color: white;
+    text-align: center;
+    line-height: 20px;
+    font-size: 35px;
+    font-family: 'Times New Roman', Times, serif;
+}
+a {
+    color: white;
+    text-decoration: none;
+}
+body {
+    width: 800px;
+    margin: 0 auto;
+    background-color: black;
+    padding: 15px 30px 30px 30px;
+    border: 8px solid gray;
+}
+img {
+    display: block;
+    width: 800px;
+    margin: 0 auto;
+}
+p.foot {
+    font-size: 30px;
+    color: slategray;
+    text-align: center;
+    line-height: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+p.main {
+    color: black;
+    text-align: left;
+    font-size: 40px;
+}
+#END {
+    display: block;
+    width: 60px;
+    margin: 0 auto;
+}
