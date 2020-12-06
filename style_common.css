@@ -31,7 +31,7 @@ body {
     margin: 0 auto;
     background-color: black;
     padding: 15px 30px 30px 30px;
-    border: 8px solid gray;
+    border: 8px solid dimgray;
 }
 img {
     display: block;
@@ -53,7 +53,7 @@ p.main {
 p.article {
     color: white;
     background-color: black;
-    font-size: 35px;
+    font-size: 32px;
     text-indent: 2em;
     line-height: 2em;
     margin: 1em 1em 1em 1em;
