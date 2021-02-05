@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" sizes="" href="https://images.gitee.com/uploads/images/2021/0205/161548_6fcd9981_8658392.png">
+    <link rel="stylesheet" href="style-3.css">
+    <title>Fel!xpace</title>
+    <style>
+        * {
+            margin: 0%;
+            padding: 0%;
+        }
+
+        html {
+            font-size: 4vh;
+            min-width: 80%;
+            background-color: #000000;
+        }
+
+        body {
+            width: 100%;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        strong {
+            font-size: 1rem;
+        }
+
+        div.header {
+            margin: 0%;
+            width: 100%;
+            height: 2rem;
+            background-color: rgba(43, 38, 38, 0.9);
+        }
+
+        div.title {
+            float: left;
+            margin: 0%;
+            padding: 0.5rem;
+
+            text-align: center;
+            font-size: 0.8rem;
+            height: fit-content;
+            width: fit-content;
+            color: rgb(171, 172, 158);
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+
+        div.bottom {
+            float: right;
+            margin: 0%;
+            padding: 0.5rem;
+
+            text-align: center;
+            font-size: 0.8rem;
+
+            height: fit-content;
+            width: fit-content;
+            color: rgb(171, 172, 158);
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+        }
+
+        div.main {
+            /*align-content: center;*/
+            height: 100%;
+            width: 100%;
+        }
+
+        #h1 {
+            margin: 0 auto;
+            padding-top: 15%;
+            padding-bottom: 2rem;
+
+            min-height: 75vh;
+            width: 100%;
+
+            background-color: whitesmoke;
+            background-image: url(https://images.gitee.com/uploads/images/2021/0205/162435_17a98796_8658392.jpeg);
+
+            background-size: cover;
+
+            align-content: center;
+        }
+
+        div.h1-1 {
+            width: 100%;
+            font-size: 3.5rem;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            color: black;
+            text-align: center;
+        }
+
+        div.h1-2 {
+            margin-top: 1.5rem;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0.3rem 0.5rem 0.3rem 0.5rem;
+
+            width: fit-content;
+            border-radius: 1rem;
+            background-color: rgba(144, 214, 219, 0.6);
+
+            font-size: 1.3rem;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            text-align: center;
+        }
+
+        div.footer {
+            padding-top: 0.5rem;
+
+            width: 100%;
+            height: fit-content;
+            min-height: 10vh;
+
+            background-color: rgba(43, 38, 38, 0.9);
+
+            color: rgb(171, 172, 158);
+            text-align: center;
+            line-height: 150%;
+            font-size: 0.7rem;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+
+        #bottom_img {
+            margin: 0.5rem 0.8rem 0rem 0.8rem;
+            width: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <a href="https://jingfelix.github.io/">
+            <div class="title">
+                Fel!xpace
+            </div>
+        </a>
+        <a href="https://jingfelix.github.io/about.html">
+            <div class="bottom">
+                ABOUT
+            </div>
+        </a>
+    </div>
+    <div class="main">
+        <hr>
+        <div id="h1">
+            <div class="h1-1">
+                Peace & Love
+            </div>
+            <div class="h1-2">
+                <a href="https://jingfelix.github.io">Fel!xpace</a>
+            </div>
+        </div>
+        <hr>
+    </div>
+    <script type="text/javascript">
+        var curIndex = 0;
+        //时间间隔(单位毫秒)，每秒钟显示一张，数组共有3张图片放在img文件夹下。
+        var timeInterval = 20000;
+
+        //定义一个存放照片位置的数组，可以放任意个，在这里放3个
+        var arr = new Array();
+        arr[0] = "https://images.gitee.com/uploads/images/2021/0205/161540_297e6788_8658392.jpeg";
+        arr[1] = "https://images.gitee.com/uploads/images/2021/0205/162219_76525bc6_8658392.jpeg";
+        arr[2] = "https://images.gitee.com/uploads/images/2021/0205/162435_17a98796_8658392.jpeg";
+        setInterval(changeImg, timeInterval);
+        function changeImg() {
+
+            //获得id名为d1的对象
+            var obj = document.getElementById("h1");
+            if (curIndex == arr.length - 1) {
+                curIndex = 0;
+            } else {
+                curIndex += 1;
+            }
+            //设置d1的背景图片
+            obj.style.backgroundImage = "URL(" + arr[curIndex] + ")";       //显示对应的图片
+        }
+    </script>
+    <div class="footer">
+        "星の鼓動は愛"
+        <a href="https://github.com/jingfelix">
+            <img id="bottom_img" src="https://images.gitee.com/uploads/images/2021/0205/161548_6fcd9981_8658392.png" alt="">
+        </a>
+        By jfelix 2021
+    </div>
+</body>
+
+</html>
