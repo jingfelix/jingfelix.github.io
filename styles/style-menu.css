@@ -23,6 +23,10 @@ p {
     font-size: 0.6rem;
     text-align: right;
 }
+li {
+    font-size: 0.9em;
+    line-height: 1.7em;
+}
 hr {
     margin: 0.2rem 0rem 0.2rem 0rem;
     background: black;
@@ -64,7 +68,9 @@ div.bottom {
     height: fit-content;
     min-height: 85vh;
 
-    background-image: url(https://jingfelix-ihs.oss-cn-beijing.aliyuncs.com/images/h1-3.jpg);
+    background-color: #cecccc;
+    background-size: cover;
+
 }
 div.menuitem {
     margin: 0.7rem 0.5rem 0.7rem 0.5rem;
