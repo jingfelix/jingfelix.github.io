@@ -92,6 +92,9 @@ div.h1-2 {
     text-align: center;
 }
 div.footer {
+    position:fixed;
+    bottom:0%;
+    
     padding-top: 0.5rem;
 
     width: 100%;
