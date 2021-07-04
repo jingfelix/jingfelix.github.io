@@ -33,7 +33,7 @@ header {
 
   padding-top: 0.3rem;
 
-  background-color: rgba(256, 256, 256, 0.5);
+  background-color: rgba(256, 256, 256, 0.6);
 }
 
 main {
@@ -50,7 +50,7 @@ footer {
   padding-top: 0.6rem;
   padding-bottom: 0rem;
 
-  background-color: rgba(256, 256, 256, 0.5);
+  background-color: rgba(256, 256, 256, 0.6);
 }
 
 div.content {
