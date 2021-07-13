@@ -1,4 +1,12 @@
 # jingfelix.github.io
-Fel!xpace: My personal site.
+<h2><a href="https://jingfelix.github.io">Fel!xpace</a>: My personal site.</h2>
+<hr>
+<li>12月3日-在Github上建立repo，发布第一个测试版本；主体像素宽度固定，无法屏幕自适应，几乎没有内容</li>
+<li>12月末-更新了背景色和圆角大小</li>
 <br>
-<a href="jingfelix.github.io">Fel!xpace</a>
+<li>2月5日-删除原版本，改进了CSS，实现了一定程度上的移动端自适应，提供了更好的阅读体验；更换图床为阿里云对象存储</li>
+<li>3月2日-增添了“关于”界面，补充了已经确定要写的部分文章（在写了在写了）；改掉了文章和目录界面过于花里胡哨的背景图片</li>
+<li>3月6日-调整了目录和文章页面配色（看着像是黑白的……）</li>
+<br>
+<li>7月4日-在保留基本设计元素的情况下重新整理了界面</li>
+<li>7月11日-增加了CSS动画，更换了图床（部分）</li>
