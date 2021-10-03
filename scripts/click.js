@@ -30,3 +30,14 @@
         }
     }
 }());
+
+let a_list = document.querySelectorAll('a');
+    var i = 0;
+    for (len = a_list.length; i < len; i++) {
+        a_list[i].onmouseover = function () {
+            this.style.textDecoration = 'underline';
+        }
+        a_list[i].onmouseout = function () {
+            this.style.textDecoration = 'none';
+        }
+    }

@@ -1,0 +1,21 @@
+name: buildScript
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs: 
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: check
+      uses: actions/checkout@v2
+
+    - name: setup python
+      uses: actions/setup-python@v2
+      
+    - name: build and deploy
+      run:
+        python3 build.py
