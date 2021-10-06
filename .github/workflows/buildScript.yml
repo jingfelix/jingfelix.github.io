@@ -19,3 +19,12 @@ jobs:
     - name: build and deploy
       run:
         python3 build.py
+
+    - name: add and commit
+      uses: EndBug/add-and-commit@v7
+      with: 
+        author_name: jingfelix
+        branch: jingfelix@outlook.com
+        message: latest build
+      env:
+        GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}

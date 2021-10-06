@@ -10,6 +10,7 @@ pson = {
                     <li><i><a href="./articles/wx.html">微信公众号整理</a></i></li>
                     <li><i><a href="./articles/casual.html">各种随想</a></i></li>
                     <li><i><a href="./articles/datastructure.html">（还没上线的）数据结构笔记</a></i></li>
+                    <li><i><a href="./articles/stevejobs.html">纪念 史蒂夫 · 乔布斯</a></i></li>
                     <div class="blank"></div>"""
     },
     "about": {
@@ -94,9 +95,9 @@ pson = {
     },
     "stevejobs": {
         "title": "Celebrating Steve Jobs",
-        "photo": "https://pic2.zhimg.com/v2-2a0d56ed503f6251d322783039df18a6_r.jpg?source=1940ef5c",
+        "photo": "https://pic2.zhimg.com/0f6ba746853e2552cbc76190cb7a89d9_r.jpg?source=1940ef5c",
         "content": '''
-        <h1 style="text-align: center;">纪念史蒂夫·乔布斯</h1>
+        <h1 style="text-align: center;">纪念 史蒂夫 · 乔布斯</h1>
         '''
     }
 }
