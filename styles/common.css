@@ -6,7 +6,9 @@
   color: black;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
-
+h1 {
+  text-align: left;
+}
 h2 {
   font-size: 1.6rem;
 }
