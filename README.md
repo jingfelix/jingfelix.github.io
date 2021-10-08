@@ -5,6 +5,7 @@
                     <div class="blank"></div>
                     <li>在读书，读网安，可能要走学术线</li>
                     <li>痴迷设计出色的软硬件，坚持开源开放而不用apple（误</li>
+                    <li><i><a href='[[URL]]/resume.html'>我的简历</a></i></li>
                     <div class="blank"></div>
                     <hr>
                     <div class="blank"></div>
@@ -26,6 +27,6 @@
                     <div class="blank"></div>
                     <hr>
                     <div class="blank"></div>
-                    <li>9月-计划增加github action部署，以后只需要修改articles下的文件</li>
-                    <li>10月6日-增添了自动部署</li>
+                    <li>9月-计划增加 github action 部署，以后只需要修改 articles 下的文件</li>
+                    <li>10月6日-增添了自动部署和 markdown/html 兼容，再也不想改了……</li>
                     <div class="blank"></div>
