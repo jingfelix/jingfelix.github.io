@@ -2,6 +2,7 @@ pson = {
     "index": {
         "title": "Fel!xpace",
         "photo": "https://pic3.zhimg.com/50/v2-f8b5afa8767a3c1b2bd126f8ba1b42b6_r.jpg",
+        "format": "html",
         "content": """<h1 style="text-align: left;">归档</h1>
                     <hr>
                     <div class="blank"></div>
@@ -16,6 +17,7 @@ pson = {
     "about": {
         "title": "ABOUT",
         "photo": "https://pic3.zhimg.com/50/v2-196719fdc87d3d7c8805c99281653922_r.jpg",
+        "format": "html",
         "content": """<h1 style="text-align: left;">ABOUT</h1>
                     <hr>
                     <div class="blank"></div>
@@ -23,6 +25,7 @@ pson = {
                     <div class="blank"></div>
                     <li>在读书，读网安，可能要走学术线</li>
                     <li>痴迷设计出色的软硬件，坚持开源开放而不用apple（误</li>
+                    <li><i><a href='[[URL]]/resume.html'>我的简历</a></i></li>
                     <div class="blank"></div>
                     <hr>
                     <div class="blank"></div>
@@ -44,13 +47,14 @@ pson = {
                     <div class="blank"></div>
                     <hr>
                     <div class="blank"></div>
-                    <li>9月-计划增加github action部署，以后只需要修改articles下的文件</li>
-                    <li>10月6日-增添了自动部署</li>
+                    <li>9月-计划增加 github action 部署，以后只需要修改 articles 下的文件</li>
+                    <li>10月6日-增添了自动部署和 markdown/html 兼容，再也不想改了……</li>
                     <div class="blank"></div>"""
     },
     "wx": {
         "title": "微信公众号整理",
         "photo": "https://pic1.zhimg.com/50/v2-cfb2493cf9d8d67d61e7c5a9de4d26e8_r.jpg",
+        "format": "html",
         "content": """
                     <hr>
                     <div class="blank"></div>
@@ -72,32 +76,41 @@ pson = {
     "casual": {
         "title": "各种随想",
         "photo": "https://pic4.zhimg.com/50/v2-cb480a53180860cffdd4014de1a255af_r.jpg",
+        "format": "md",
         "content": """
-                    <h1 style="text-align: left;">随想</h1>
-                    <hr>
-                    <div class="blank"></div>
-                    <h2>0000-对各类看到的产品的观点和吐槽</h2>
-                    <div class="blank"></div>
-                    <li>以极低的价格购置了一台有锁 iPhone SE (2016)</li>
-                    <li>在 iOS 14.3 下运行苹果第一方应用丝般顺滑，尤其是播客和 Apple Music. 需要承认，安卓在 UX 领域想要追上苹果还要很久……</li>
-                    <li>顺理成章地抛弃网易云投靠了 Apple Music. 毕竟学生优惠下每个月只要5块钱就能享受到纯净的听歌体验。缺点是歌单需要迁移。</li>
-                    <div class="blank"></div>
-                    <h2>0921-关于产品组笔试</h2>
-                    <div class="blank"></div>
-                    <li>开始写pivot
-                        studio的产品组笔试。我发现，我几乎一点都不想写需求文档或者画原型图。如果我有一个想法，我更愿意自己尽可能把它直接实现。我会构建自己的需求文档和原型图，但不是以专业pm的方式。</li>
-                    <li>另外，应试者似乎是团队的重要灵感来源。不过以此为前提进行测试有一个问题：每个人擅长的领域是不同的，很难要求擅长做工具的人去回答做平台的问题。</li>
-                    <div class="blank"></div>
-                    <li>果然最后连笔试都没有完成（当时处于看见prd就烦的程度，另一边就摸鱼写了BiliFM的第一版）</li>
-                    <li>其实是有些想法和建议的，尤其是关于[小树林]功能。</li>
-                    <div class="blank"></div>
+# 随想
+---
+$
+
+## 0000-对各类看到的产品的观点和吐槽
+$
+
+* 以极低的价格购置了一台有锁 iPhone SE (2016)
+* 在 iOS 14.3 下运行苹果第一方应用丝般顺滑，尤其是播客和 Apple Music. 需要承认，安卓在 UX 领域想要追上苹果还要很久……
+* 顺理成章地抛弃网易云投靠了 Apple Music. 毕竟学生优惠下每个月只要5块钱就能享受到纯净的听歌体验。缺点是歌单需要迁移，缺少了些人性化的功能。比如，如果没有 Seto 的 lofilove 剪辑，我永远也不会去看EVA。
+* 但什么样的功能应该出现在产品上呢？这里“人性化”的边界是难以确定的，网易云在这一点上仍需要斟酌，否则难以逃脱现在大杂烩的现状。
+
+$
+## 0921-关于产品组笔试
+$
+
+* 开始写pivotstudio的产品组笔试。我发现，我几乎一点都不想写需求文档或者画原型图。如果我有一个想法，我更愿意自己尽可能把它直接实现。我会构建自己的需求文档和原型图，但不是以专业pm的方式。
+* 另外，应试者似乎是团队的重要灵感来源。不过以此为前提进行测试有一个问题：每个人擅长的领域是不同的，很难要求擅长做工具的人去回答做平台的问题。
+
+$
+
+* 果然最后连笔试都没有完成（当时处于看见prd就烦的程度，另一边就摸鱼写了BiliFM的第一版）
+* 其实是有些想法和建议的，尤其是关于[小树林]功能。
+
+$
         """
     },
     "stevejobs": {
         "title": "Celebrating Steve Jobs",
         "photo": "https://pic2.zhimg.com/0f6ba746853e2552cbc76190cb7a89d9_r.jpg?source=1940ef5c",
+        "format": "html",
         "content": '''
         <h1 style="text-align: center;">纪念 史蒂夫 · 乔布斯</h1>
         '''
-    }
+    },
 }

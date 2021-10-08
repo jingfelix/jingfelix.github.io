@@ -16,8 +16,9 @@ jobs:
     - name: setup python
       uses: actions/setup-python@v2
       
-    - name: build and deploy
+    - name: build
       run:
+        pip install markdown
         python3 build.py
 
     - name: add and commit
