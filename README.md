@@ -5,7 +5,7 @@
                     <div class="blank"></div>
                     <li>在读书，读网安，可能要走学术线</li>
                     <li>痴迷设计出色的软硬件，坚持开源开放而不用apple（误</li>
-                    <li><i><a href='[[URL]]/resume.html'>我的简历</a></i></li>
+                    <li><i><a href='https://jingfelix.github.io/resume.html'>我的简历</a></i></li>
                     <div class="blank"></div>
                     <hr>
                     <div class="blank"></div>
