@@ -40,4 +40,4 @@ copy(articleDirPath + aboutPath, aboutPath)
 
 # build README.md
 with open(readmePath, mode='w', encoding='utf-8') as r:
-    r.write(pson['about']['content'])
+    r.write(pson['about']['content'].replace('[[URL]]', url))
