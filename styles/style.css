@@ -1,0 +1,106 @@
+body {
+    padding-top: 3rem;
+  }
+  
+  a {
+    text-decoration: none;
+    color: #000000;
+  }
+  
+  .title-a {
+    font-weight: 500;
+  }
+  
+  .maxwidth {
+    max-width: 80%;
+  }
+  .minwidth {
+    min-width: 40%;
+  }
+  
+  .center-stage {
+    margin-top: 0.8rem;
+    word-wrap: break-word;
+    word-break: break-all;
+  }
+  
+  .para {
+    line-height: 1.8rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .word-center {
+    text-align: center;
+  }
+  
+  .word-left {
+    text-align: left;
+  }
+  
+  .word-right {
+    text-align: right;
+  }
+  
+  #main-pic {
+    margin-top: 0.3rem;
+    border-radius: 1rem;
+    margin-bottom: 0.6rem;
+  }
+  
+  #article-pic {
+    margin-top: 0.3rem;
+    border-radius: 1rem;
+    margin-bottom: 0.6rem;
+    max-width: 80%;
+    
+  }
+  
+  #headline {
+    margin-top: 0.5rem;
+  }
+  
+  #header-a {
+    font-weight: bold;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  
+  #icon-bottom {
+    width: 1.3rem;
+  }
+  
+  #footer {
+    padding-top: 1rem;
+  }
+  
+  #animition {
+    -webkit-animation: scale-up-center 0.7s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+      animation: scale-up-center 0.7s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  }
+  
+  * {
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  }
+  
+  @-webkit-keyframes scale-up-center {
+    0% {
+      -webkit-transform: scale(0.5);
+              transform: scale(0.5);
+    }
+    100% {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+    }
+  }
+  @keyframes scale-up-center {
+    0% {
+      -webkit-transform: scale(0.5);
+              transform: scale(0.5);
+    }
+    100% {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+    }
+  }
+  /*animition are made by animista.cnet*/

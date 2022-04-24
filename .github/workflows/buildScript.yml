@@ -21,11 +21,15 @@ jobs:
         pip install markdown
         python3 build.py
 
+    - name: Get current time
+      uses: gerred/actions/current-time@master
+      id: current-time
+
     - name: add and commit
       uses: EndBug/add-and-commit@v7
       with: 
         author_name: jingfelix
         branch: main
-        message: latest build
+        message: ${{ steps.current-time.outputs.time }} build
       env:
         GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}

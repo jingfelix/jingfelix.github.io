@@ -1,0 +1,16 @@
+{
+    "name": "Fel!xpace",
+    "short_name": "Felix",
+    "description": "My personal blog",
+    "icons": [
+        {
+            "src": "https://jingfelix-ihs.oss-cn-beijing.aliyuncs.com/images/ico.png",
+            "sizes": "64x64",
+            "type": "image/png"
+        }
+    ],
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#ffffff"
+}
