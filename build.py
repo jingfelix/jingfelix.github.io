@@ -30,7 +30,7 @@ def viewPageIndex(article_path: str) -> str:
 
     for name in list(p.glob("*.md")):
         name = (
-            str(name).replace(".md", "").replace(str(article_path), "").replace("/", "")
+            str(name).replace(".md", "").replace(str(article_path), "").replace("/", "").replace("\\", "")
         )
         # TODO: 修改name变量使其不包含路径
 
@@ -51,13 +51,13 @@ def viewPagePost(article_path: str, template_file_path: str, pic_dic: dict) -> b
     p = Path(article_path)
 
     # get template html content
-    with open(template_file_path, "r") as f:
+    with open(template_file_path, "r", encoding="utf-8") as f:
         template_content = f.read()
 
     # get article content
     for name in list(p.glob("*.md")):
         name = str(
-            str(name).replace(".md", "").replace(str(article_path), "").replace("/", "")
+            str(name).replace(".md", "").replace(str(article_path), "").replace("/", "").replace("\\", "")
         )
 
         if name in pic_dic:
@@ -65,13 +65,13 @@ def viewPagePost(article_path: str, template_file_path: str, pic_dic: dict) -> b
         else:
             photo_to_replace = "https://api.vvhan.com/api/bing?type=sj"
 
-        with open(article_path + "/" + name + ".md", "r") as md_file:
+        with open(article_path + "/" + name + ".md", "r", encoding="utf-8") as md_file:
             markdown_content = md_file.read()
 
             # convert markdown to html
             markdown_to_replace = markdown.markdown(markdown_content)
 
-        with open(article_path + "/" + name + ".html", "w") as html_file:
+        with open(article_path + "/" + name + ".html", "w", encoding="utf-8") as html_file:
             html_file.write(
                 template_content.replace("<!--MARKDOWN-->", markdown_to_replace)
                 .replace("<!--TITLE-->", name)
@@ -86,7 +86,7 @@ def main():
     article_path = current_path / "articles"
     template_file_path = current_path / "templates" / "template.html"
 
-    with open(template_file_path, "r") as f:
+    with open(template_file_path, "r", encoding="utf-8") as f:
         template_file_content = f.read()
 
     content_to_replace = viewPageIndex(article_path)
@@ -102,11 +102,11 @@ def main():
     with open(current_path / "index.html", "w", encoding="utf-8") as f:
         f.write(new_index)
 
-    with open(current_path / "pic.json", "r") as f:
+    with open(current_path / "pic.json", "r", encoding="utf-8") as f:
         pic_dic = json.load(f)
 
-    with open(article_path / "关于.md", "r") as f1:
-        with open(current_path / "README.md", "w+") as f2:
+    with open(article_path / "关于.md", "r", encoding="utf-8") as f1:
+        with open(current_path / "README.md", "w+", encoding="utf-8") as f2:
             f2.write(f1.read())
 
     if viewPagePost(str(article_path), str(template_file_path), pic_dic) is True:

@@ -18,6 +18,7 @@ jobs:
       
     - name: build
       run: |
+        pip install -i https://test.pypi.org/simple/ html-jingfelix==0.0.3a0
         pip install markdown
         python3 build.py
 
