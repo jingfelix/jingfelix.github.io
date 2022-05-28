@@ -1,9 +1,9 @@
-/.github
-/__pycache__
-/templates
+!/README.md
 
 *.json
 *.py
 *.md
 
-!/README.md
+/.github
+/__pycache__
+/templates
