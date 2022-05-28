@@ -1,0 +1,7 @@
+/.github
+/__pycache__
+/templates
+
+*.json
+*.py
+*.md
