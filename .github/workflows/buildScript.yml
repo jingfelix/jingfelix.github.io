@@ -26,15 +26,6 @@ jobs:
       uses: gerred/actions/current-time@master
       id: current-time
 
-    - name: add and commit
-      uses: EndBug/add-and-commit@v7
-      with: 
-        author_name: jingfelix
-        branch: gh-pages
-        message: ${{ steps.current-time.outputs.time }} build
-      env:
-        GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-
     - name: add to main branch
       uses: EndBug/add-and-commit@v7
       with:

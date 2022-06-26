@@ -1,9 +1,1 @@
-!/README.md
-
-*.json
-*.py
-*.md
-
-/.github
 /__pycache__
-/templates
