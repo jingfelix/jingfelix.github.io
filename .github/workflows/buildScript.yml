@@ -34,3 +34,7 @@ jobs:
         message: ${{ steps.current-time.outputs.time }} build
       env:
         GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+
+    - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
