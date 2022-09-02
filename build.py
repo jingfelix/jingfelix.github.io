@@ -1,7 +1,7 @@
 try:
     from htmlobj import *
     from pathlib import Path
-    import markdown
+    import mistune
     import copy
     import json
 except ImportError:
@@ -69,7 +69,7 @@ def viewPagePost(article_path: str, template_file_path: str, pic_dic: dict) -> b
             markdown_content = md_file.read()
 
             # convert markdown to html
-            markdown_to_replace = markdown.markdown(markdown_content)
+            markdown_to_replace = mistune.html(markdown_content)
 
         with open(article_path + "/" + name + ".html", "w", encoding="utf-8") as html_file:
             html_file.write(
