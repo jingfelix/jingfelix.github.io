@@ -16,11 +16,11 @@
     <link rel="stylesheet" href="/style/style.css">
     <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1.0.2/dist/css/mdui.min.css" />-->
     <link href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/mdui/1.0.2/css/mdui.css" type="text/css" rel="stylesheet" />
-
+    <link href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/highlight.js/11.4.0/styles/default.min.css" type="text/css" rel="stylesheet" />
     <title>Fel!xpace</title>
 </head>
 
-<body class="mdui-bottom-nav-fixed mdui-color-white">
+<body class="mdui-bottom-nav-fixed mdui-color-white mdui-theme-accent-orange">
     <div class="mdui-container-fluid">
         <div class="mdui-row center-stage">
             <div class="mdui-col-xs-1 mdui-col-md-3"></div>
@@ -37,7 +37,7 @@
 <ul>
 <li>在读书，读网安，还不确定走什么方向</li>
 <li>痴迷于设计出色的软硬件，坚持开源开放却还是用了Apple（误</li>
-<li><a href="https://jingfelix.github.io/resume.html">我的简历</a></li>
+<li><a href="/resume.html">我的简历</a></li>
 </ul>
 <hr />
 <h4>一点开发日志</h4>
@@ -46,6 +46,7 @@
 <li>4月20日-使用 MDUI 在不改变原风格的情况下改写了前端样式，实现了更普适的多端自适应，完整的 markdown 支持</li>
 <li>5月28日-将 MDUI 的静态资源换用字节的 CDN，分离了对 htmlobj 的依赖，将 gh-pages 分支与主分支分离，避免 Action 运行时产生冲突</li>
 <li>8月8日-测试新的 Pages Deployment 方法，直接通过 Action 构建（没有完整文档，先改回去了）</li>
+<li>11月15日-使用 highlight.js 添加了代码高亮，暂时与字体样式存在冲突；md2html 库替换为 mistune；更换了强调色</li>
 </ul>
 <hr />
 <h5>2021</h5>
@@ -94,6 +95,8 @@
     <!-- MDUI JavaScript -->
     <!--<script src="https://cdn.jsdelivr.net/npm/mdui@1.0.2/dist/js/mdui.min.js"></script>-->
     <script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/mdui/1.0.2/js/mdui.min.js" type="application/javascript"></script>
+    <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/highlight.js/11.4.0/highlight.min.js" type="application/javascript"></script>
+    <script>hljs.highlightAll();</script>
 </body>
 
 </html>
