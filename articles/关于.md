@@ -2,7 +2,7 @@
 
 * 在读书，读网安，还不确定走什么方向
 * 痴迷于设计出色的软硬件，坚持开源开放却还是用了Apple（误
-* [我的简历](https://jingfelix.github.io/resume.html)
+* [我的简历](/resume.html)
 
 ---
 
@@ -13,6 +13,7 @@
 * 4月20日-使用 MDUI 在不改变原风格的情况下改写了前端样式，实现了更普适的多端自适应，完整的 markdown 支持
 * 5月28日-将 MDUI 的静态资源换用字节的 CDN，分离了对 htmlobj 的依赖，将 gh-pages 分支与主分支分离，避免 Action 运行时产生冲突
 * 8月8日-测试新的 Pages Deployment 方法，直接通过 Action 构建（没有完整文档，先改回去了）
+* 11月15日-使用 highlight.js 添加了代码高亮，暂时与字体样式存在冲突；md2html 库替换为 mistune；更换了强调色
 
 ---
 
