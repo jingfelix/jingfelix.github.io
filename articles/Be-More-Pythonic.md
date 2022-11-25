@@ -74,4 +74,27 @@ def do_stuff():
   - 有趣的例子：`True and None or 0`
     
 
-####
+## 数字与字符串
+
+- 工程建议：用变量代替固定的数字变量
+
+- 使用枚举
+
+```python
+from enum import IntEnum
+
+class TripSource(IntEnum):
+    FROM_WEBSITE = 11
+    FROM_IOS_CLIENT = 12
+```
+
+- 工程建议：保留计算过程
+
+- 针对超长字符串：`textwarp.dedent()`可以去除多行字符串左侧的空格
+
+- 针对超长数字：可以在数字中间添加下划线_
+
+- `.strip()`和`.split()`方法的镜像方法：加 r，将从右到左处理
+
+- 无穷大与无穷小：
+
