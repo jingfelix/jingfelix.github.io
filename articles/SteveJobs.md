@@ -6,3 +6,4 @@
 * iPad 3 2012
 * iPad Air 1 2013
 * iPhone SE 2016
+* Apple Watch Series 4 2018
