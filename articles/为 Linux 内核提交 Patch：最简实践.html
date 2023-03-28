@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="zh-cmn-Hans">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <link rel="shortcut icon" sizes="" href="https://jingfelix-ihs.oss-cn-beijing.aliyuncs.com/images/ico.png">
+
+    <link rel="manifest" href="/manifest.webmanifest">
+
+    <!-- MDUI CSS -->
+    <link rel="stylesheet" href="/style/style.css">
+    <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1.0.2/dist/css/mdui.min.css" />-->
+    <link href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/mdui/1.0.2/css/mdui.css" type="text/css" rel="stylesheet" />
+    <link href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/highlight.js/11.4.0/styles/default.min.css" type="text/css" rel="stylesheet" />
+    <title>Fel!xpace</title>
+</head>
+
+<body class="mdui-bottom-nav-fixed mdui-color-white mdui-theme-accent-orange">
+    <div class="mdui-container-fluid">
+        <div class="mdui-row center-stage">
+            <div class="mdui-col-xs-1 mdui-col-md-3"></div>
+            <div class="mdui-col-xs-10 mdui-col-md-6">
+                <div class="mdui-row" id="animition">
+                    <img id="main-pic" class="mdui-img-fluid mdui-shadow-10"
+                        src="https://api.vvhan.com/api/bing?type=sj" alt="">
+                    <div id="headline" class="mdui-col-xs-12 mdui-typo-headline">
+                        为 Linux 内核提交 Patch：最简实践
+                    </div>
+                    <div class="mdui-typo mdui-col-xs-12">
+                        <hr />
+                        <h1>为 Linux 内核提交 Patch：最简实践</h1>
+<p>最近有一个向 Linux 内核提交 Patch (补丁) 的机会。历经卡在 SMTP 配置，被老板退回数次，被 Maintainer 建议修改后，终于被接纳进了 subtree……</p>
+<blockquote>
+<p><del>让自己的代码名留千古的机会</del> ❌</p>
+<p>涉及的驱动可能被删除以避免侧信道攻击 ✅</p>
+</blockquote>
+<h2>什么是内核 Patch</h2>
+<p>众所周知，Linux 内核是世界上最大，最复杂，也是最重要的软件之一。其开发和维护依赖全球数以万计的开发者共同努力。</p>
+<p>向 Linux 社区贡献代码的最基本方式是通过邮件的方式向内核维护者提交补丁（而非“现代化”地在代码托管平台发起 Pull Request）</p>
+<blockquote>
+<p>A patch is a small text document containing a delta of changes between two different versions of a source tree. FROM kernel.org.</p>
+</blockquote>
+<p>补丁文件按照一定的格式介绍了代码变动的内容，以及进行这些修改的原因。经内核维护者审查通过后，这个补丁将集中合并进内核主线，或进入某个特殊的分支。</p>
+<h2>配置准备</h2>
+<p>本文基于 Ubuntu 介绍发送 Patch 的基本配置。</p>
+<ul>
+<li><p>git</p>
+</li>
+<li><p>git send-email ( <code>apt install git-email</code>, <code>git-core</code> is also needed)</p>
+</li>
+<li><p>diff</p>
+</li>
+<li><p>perl</p>
+</li>
+</ul>
+<p>其中，git 用于版本控制与代码提交，git send-email 用于发送携带补丁的邮件，diff 用于比较文件差异，perl 作为 perl 解释器执行提交补丁所需的脚本。</p>
+<p>为配置 smtp 发送邮件，需要在 git 配置文件<code>.gitconfig</code>中添加邮件相关的配置，以下为一个使用 Gmail 作为发送邮箱的例子：</p>
+<pre><code class="language-git">[user]
+    name = YOURNAME
+    # 此处的 email 应与发送邮件的邮箱一致
+    email = YOURMAIL@gmail.com
+[sendemail]
+    from = YOURNAME &lt;YOURMAIL@gmail.com&gt;
+    smtpencryption = ssl 
+    # 也可使用 tls 作为加密方式，端口应改为 478
+    smtpserver = smtp.gmail.com
+    smtpuser = YOURNAME
+    smtpserverport = 465
+    smtpAuth = LOGIN
+    chainreplyto = false
+    # tocmd 和 cccmd 是对获取内核邮件列表指令的简化，如果发送给自己以进行测试，只需注释即可
+    tocmd = &quot;`pwd`/scripts/get_maintainer.pl --nogit --norolestats --nol&quot;
+    cccmd = &quot;`pwd`/scripts/get_maintainer.pl --nogit --norolestats --nom&quot;
+</code></pre>
+<h2>进行修改</h2>
+<p>想提交内核补丁，当然需要先获取一份内核代码！从 <a href="kernel.org">kernel.org</a> 等处可以获取内核源码仓库，<code>git clone</code>一份到本地你喜欢的地方，并新建一个准备进行修改工作的分支。</p>
+<pre><code class="language-bash">git clone git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git
+git branch -b fix/blablabla
+</code></pre>
+<p>注意，为了避免出现冲突，需要保持本地代码与主线一致。开始修改前<code>git pull</code>是个好习惯。</p>
+<h2>描述改动</h2>
+<p>进行<code>commit</code>时，简单描述一下你所进行的改动，<code>commit</code>标题格式可以参考其他补丁，一般为<code>A: B: blablabla</code>的形式。使用<code>git commit -s</code>自动添加<code>Signed-off-by: YOUNAME &lt;YOUREMAIL@gmail.com&gt;</code>，否则你应在 patch 文件中添加该行信息。</p>
+<pre><code class="language-bash">git format-patch -1
+</code></pre>
+<p><code>git format-patch</code>将在当前目录下生成一份包含标准邮件格式（但不一定是标准补丁格式）的<code>.patch</code>文件。</p>
+<p>在<code>Subject:</code>与<code>Signed-off-by</code>行之间，需要对该补丁进行详细描述。我提交的补丁中描述了如何发现问题（Smatch 提供的错误信息），错误原因（<code>ioremap</code> 分配的内存没有取消映射）和修改方式（改为<code>devm_ioremap</code>以保证在设备移除时取消内存映射）</p>
+<h2>发送，以及等待</h2>
+<p>格式检查：使用内核源码中内置的脚本。</p>
+<pre><code class="language-bash">$PATH_TO_KERNEL/scripts/checkpatch.pl YOUR_PATCH.patch
+</code></pre>
+<p>一个常见的错误是：</p>
+<pre><code class="language-bash">WARNING: Possible unwrapped commit description (prefer a maximum 75 chars per line)
+</code></pre>
+<p>这是因为在 Linux 内核的<code>COMMIT_MSG</code>和 Patch 需要能够在限长 80 字符的终端机正常显示，因此每行不能超过 80 字（believe it or not，内核中充满神奇的古老规定）按报错信息修改即可。</p>
+<p>还记得我们在<code>.gitconfig</code>中添加的<code>tocmd</code>和<code>cccmd</code>吗？</p>
+<p>~未完待续~~</p>
+
+                    </div>
+                    <!--CONTENT-->
+                </div>
+
+            </div>
+            <div class="mdui-col-xs-1 mdui-col-md-3"></div>
+
+        </div>
+    </div>
+    <div class="mdui-toolbar mdui-appbar-fixed mdui-appbar-scroll-hide mdui-color-white">
+        <a href="/" id="header-a" class="mdui-typo-headline mdui-ripple">Fel!xpace</a>
+        <div class="mdui-toolbar-spacer"></div>
+        <a href="/articles/关于.html" id="header-a" class="mdui-typo-headline mdui-ripple">ABOUT</a>
+    </div>
+    <div class="mdui-bottom-nav mdui-bottom-nav-scroll-hide mdui-container-fluid mdui-color-white">
+        <!--这里改用原设计-->
+        <!--还是用新设计好了-->
+        <div class="row mdui-col-xs-12">
+            <div class="mdui-col-xs-1 mdui-col-sm-4"></div>
+            <div id="footer" class="mdui-col-xs-10 mdui-col-sm-4 word-center">
+                "星の鼓動は愛" <img id="icon-bottom" src="https://jingfelix-ihs.oss-cn-beijing.aliyuncs.com/images/ico.png"
+                    alt=""> By jfelix 2022
+            </div>
+            <div class="mdui-col-xs-1 mdui-col-sm-4"></div>
+        </div>
+    </div>
+    <!-- MDUI JavaScript -->
+    <!--<script src="https://cdn.jsdelivr.net/npm/mdui@1.0.2/dist/js/mdui.min.js"></script>-->
+    <script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/mdui/1.0.2/js/mdui.min.js" type="application/javascript"></script>
+    <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/highlight.js/11.4.0/highlight.min.js" type="application/javascript"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+
+</html>
