@@ -33,11 +33,10 @@
                     </div>
                     <div class="mdui-typo mdui-col-xs-12">
                         <hr />
-                        <h1>为 Linux 内核提交 Patch：最简实践</h1>
-<p>最近有一个向 Linux 内核提交 Patch (补丁) 的机会。历经卡在 SMTP 配置，被老板退回数次，被 Maintainer 建议修改后，终于被接纳进了 subtree……</p>
+                        <p>最近有一个向 Linux 内核提交 Patch (补丁) 的机会。历经卡在 SMTP 配置，被老板退回数次，被 Maintainer 建议修改后，终于被接纳进了 subtree……（Update：进入主线内核了！）</p>
 <blockquote>
-<p><del>让自己的代码名留千古的机会</del> ❌</p>
-<p>涉及的驱动可能被删除以避免侧信道攻击 ✅</p>
+<p><del>让自己的代码名留千古的机会</del> ❌
+涉及的驱动可能被删除以避免侧信道攻击 ✅</p>
 </blockquote>
 <h2>什么是内核 Patch</h2>
 <p>众所周知，Linux 内核是世界上最大，最复杂，也是最重要的软件之一。其开发和维护依赖全球数以万计的开发者共同努力。</p>
@@ -49,14 +48,10 @@
 <h2>配置准备</h2>
 <p>本文基于 Ubuntu 介绍发送 Patch 的基本配置。</p>
 <ul>
-<li><p>git</p>
-</li>
-<li><p>git send-email ( <code>apt install git-email</code>, <code>git-core</code> is also needed)</p>
-</li>
-<li><p>diff</p>
-</li>
-<li><p>perl</p>
-</li>
+<li>git</li>
+<li>git send-email ( <code>apt install git-email</code>, <code>git-core</code> is also needed)</li>
+<li>diff</li>
+<li>perl</li>
 </ul>
 <p>其中，git 用于版本控制与代码提交，git send-email 用于发送携带补丁的邮件，diff 用于比较文件差异，perl 作为 perl 解释器执行提交补丁所需的脚本。</p>
 <p>为配置 smtp 发送邮件，需要在 git 配置文件<code>.gitconfig</code>中添加邮件相关的配置，以下为一个使用 Gmail 作为发送邮箱的例子：</p>
@@ -66,13 +61,13 @@
     email = YOURMAIL@gmail.com
 [sendemail]
     from = YOURNAME &lt;YOURMAIL@gmail.com&gt;
-    smtpencryption = ssl 
-    # 也可使用 tls 作为加密方式，端口应改为 478
+    smtpencryption = ssl
+    # 也可使用 tls 作为加密方式，端口应改为 578
     smtpserver = smtp.gmail.com
     smtpuser = YOURNAME
     smtpserverport = 465
-    smtpAuth = LOGIN
-    chainreplyto = false
+    smtpAuth = LOGIN # 非必须
+    chainreplyto = false # 非必须
     # tocmd 和 cccmd 是对获取内核邮件列表指令的简化，如果发送给自己以进行测试，只需注释即可
     tocmd = &quot;`pwd`/scripts/get_maintainer.pl --nogit --norolestats --nol&quot;
     cccmd = &quot;`pwd`/scripts/get_maintainer.pl --nogit --norolestats --nom&quot;
@@ -87,10 +82,11 @@ git branch -b fix/blablabla
 <p>进行<code>commit</code>时，简单描述一下你所进行的改动，<code>commit</code>标题格式可以参考其他补丁，一般为<code>A: B: blablabla</code>的形式。使用<code>git commit -s</code>自动添加<code>Signed-off-by: YOUNAME &lt;YOUREMAIL@gmail.com&gt;</code>，否则你应在 patch 文件中添加该行信息。</p>
 <pre><code class="language-bash">git format-patch -1
 </code></pre>
-<p><code>git format-patch</code>将在当前目录下生成一份包含标准邮件格式（但不一定是标准补丁格式）的<code>.patch</code>文件。</p>
+<p><code>git format-patch</code>将在当前目录下生成一份包含标准邮件格式（但不一定是标准补丁格式）的<code>.patch</code>文件。这里的<code>-1</code>表示该补丁文件中仅应包含一个<code>commit</code>。</p>
 <p>在<code>Subject:</code>与<code>Signed-off-by</code>行之间，需要对该补丁进行详细描述。我提交的补丁中描述了如何发现问题（Smatch 提供的错误信息），错误原因（<code>ioremap</code> 分配的内存没有取消映射）和修改方式（改为<code>devm_ioremap</code>以保证在设备移除时取消内存映射）</p>
+<p>别忘了测试！你可以选择全量编译整个内核，或在你修改的模块里仅编译你修改的部分（比如一个驱动）</p>
 <h2>发送，以及等待</h2>
-<p>格式检查：使用内核源码中内置的脚本。</p>
+<p>格式检查：使用内核源码中内置的脚本：</p>
 <pre><code class="language-bash">$PATH_TO_KERNEL/scripts/checkpatch.pl YOUR_PATCH.patch
 </code></pre>
 <p>一个常见的错误是：</p>
@@ -98,7 +94,41 @@ git branch -b fix/blablabla
 </code></pre>
 <p>这是因为在 Linux 内核的<code>COMMIT_MSG</code>和 Patch 需要能够在限长 80 字符的终端机正常显示，因此每行不能超过 80 字（believe it or not，内核中充满神奇的古老规定）按报错信息修改即可。</p>
 <p>还记得我们在<code>.gitconfig</code>中添加的<code>tocmd</code>和<code>cccmd</code>吗？</p>
-<p>~未完待续~~</p>
+<pre><code class="language-git">tocmd = &quot;`pwd`/scripts/get_maintainer.pl --nogit --norolestats --nol&quot;
+cccmd = &quot;`pwd`/scripts/get_maintainer.pl --nogit --norolestats --nom&quot;
+</code></pre>
+<p><code>tocmd</code>行将自动获取收件人，即修改部分的内核维护者的邮件。同理，<code>cccmd</code>行获取抄送人邮件列表。这样可以简化使用命令行发送邮件时的“CLI心智负担”。</p>
+<pre><code class="language-bash">git send-email YOUR_PATCH.patch
+</code></pre>
+<p>没错，最终的发送指令就这么简单！</p>
+<p>如果想先发给自己，或者其他有经验的人为你 Review 一下，避免不合理的 Patch 引起内核维护者的怒火呢？你可以将<code>tocmd</code>和<code>cccmd</code>注释掉，并在发送时添加<code>--to</code>和<code>--cc</code>选项，指定发送/抄送人即可。</p>
+<pre><code class="language-bash">git send-email --to RECEIVE@gmail.com --cc YOURNAME@gmail.com YOUR_PATCH.patch
+</code></pre>
+<p>正是发送后，你需要的就只有……耐心地等待。Well，内核维护者们非常勤奋，但没有人能保证及时审查和回复所有邮件，对吧？</p>
+<p>假如几个星期后你的补丁邮件依然无人问津（这并不罕见），你可以发送 PING 或 RESEND 来提醒维护者。</p>
+<pre><code class="language-bash">git fromat-patch -1 --subject-prefix='PING'
+# or
+git format-patch -1 --subject-prefix='RESEND'
+</code></pre>
+<h2>修改，v2，v3，v4……</h2>
+<p>经过漫长的等待，一封<code>Re: PATCH</code>叩响了你邮箱的大门——迎接你的也许是一句简单的“Applied, thanks”，也许是满满的牢骚和怒火（当然，大多数时候是礼貌而友好的）</p>
+<p>请注意，新的 PATCH，即<code>PATCH v2</code>，应该和最初一样，在原汁原味的HEAD分支上进行改动，而不是在你的 Commit 的基础上提交新的代码。</p>
+<p>按意见修改后，你就可以发出<code>PATCH v2</code>了。记得在<code>Reviewed by</code>之后添加 Changelog 信息，即你进行了哪些修改。比如：</p>
+<pre><code class="language-bash">v2 -&gt; v3: Directly deleted 'base' and its related code based on master.
+v1 -&gt; v2: Directly deleted 'base' and its related code based on PATCH v1.
+</code></pre>
+<p>新邮件的主题也需要进行修改：</p>
+<pre><code class="language-bash">git format-patch -1 --subject-prefix='PATCH v2'
+</code></pre>
+<p>发送新补丁的过程和第一次一样，注意要发送的文件别选错了。</p>
+<p>也许修改补丁的过程要重复很多次，也许你还需要发送 v3，v4，但请不要气馁！</p>
+<h2>接收之后</h2>
+<p>在你的补丁被维护者接纳之后，它会首先被合并进该模块的子树（可以在<a href="git.kernel.org">git.kernel.org</a>找到），然后和其他补丁一起集中提交给 Linus，最后进入主线内核。大功告成！</p>
+<h2>其他需要注意的</h2>
+<ul>
+<li>只回复邮件，不发送补丁，也可以使用<code>git send-email</code>，具体需要的指令可以在<a href="https://lore.kernel.org/lkml/">https://lore.kernel.org/lkml/</a>你要回复的邮件后找到。</li>
+<li>本文没有涉及一次发送多个 PATCH 的情况。你可以在<a href="https://docs.kernel.org/translations/zh_CN/process/submitting-patches.html">这里</a>找到更多资料。</li>
+</ul>
 
                     </div>
                     <!--CONTENT-->
