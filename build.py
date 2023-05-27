@@ -28,7 +28,7 @@ def viewPageIndex(article_path: str) -> str:
     em.addChildren(a)
     div.addChildrenList([i, em])
 
-    for name in list(p.glob("*.md")):
+    for name in sorted(list(p.glob("*.md"))):
         name = (
             str(name).replace(".md", "").replace(str(article_path), "").replace("/", "").replace("\\", "")
         )
