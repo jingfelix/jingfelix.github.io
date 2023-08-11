@@ -83,7 +83,7 @@ git branch -b fix/blablabla
 <pre><code class="language-bash">git format-patch -1
 </code></pre>
 <p><code>git format-patch</code>将在当前目录下生成一份包含标准邮件格式（但不一定是标准补丁格式）的<code>.patch</code>文件。这里的<code>-1</code>表示该补丁文件中仅应包含一个<code>commit</code>。</p>
-<p>在<code>Subject:</code>与<code>Signed-off-by</code>行之间，需要对该补丁进行详细描述。我提交的补丁中描述了如何发现问题（Smatch 提供的错误信息），错误原因（<code>ioremap</code> 分配的内存没有取消映射）和修改方式（改为<code>devm_ioremap</code>以保证在设备移除时取消内存映射）</p>
+<p>在<code>Subject: </code>与<code>Signed-off-by</code>行之间，需要对该补丁进行详细描述。我提交的补丁中描述了如何发现问题（Smatch 提供的错误信息），错误原因（<code>ioremap</code> 分配的内存没有取消映射）和修改方式（改为<code>devm_ioremap</code>以保证在设备移除时取消内存映射）</p>
 <p>别忘了测试！你可以选择全量编译整个内核，或在你修改的模块里仅编译你修改的部分（比如一个驱动）</p>
 <h2>发送，以及等待</h2>
 <p>格式检查：使用内核源码中内置的脚本：</p>
