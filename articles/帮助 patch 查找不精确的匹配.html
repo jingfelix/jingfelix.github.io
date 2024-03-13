@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="zh-cmn-Hans">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <link rel="shortcut icon" sizes="" href="https://jingfelix-ihs.oss-cn-beijing.aliyuncs.com/images/ico.png">
+
+    <link rel="manifest" href="/manifest.webmanifest">
+
+    <!-- MDUI CSS -->
+    <link rel="stylesheet" href="/style/style.css">
+    <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1.0.2/dist/css/mdui.min.css" />-->
+    <link href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/mdui/1.0.2/css/mdui.css" type="text/css" rel="stylesheet" />
+    <link href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/highlight.js/11.4.0/styles/default.min.css" type="text/css" rel="stylesheet" />
+    <title>Fel!xpace</title>
+</head>
+
+<body class="mdui-bottom-nav-fixed mdui-color-white mdui-theme-accent-orange">
+    <div class="mdui-container-fluid">
+        <div class="mdui-row center-stage">
+            <div class="mdui-col-xs-1 mdui-col-md-3"></div>
+            <div class="mdui-col-xs-10 mdui-col-md-6">
+                <div class="mdui-row" id="animition">
+                    <img id="main-pic" class="mdui-img-fluid mdui-shadow-10"
+                        src="https://api.vvhan.com/api/bing?type=sj" alt="">
+                    <div id="headline" class="mdui-col-xs-12 mdui-typo-headline">
+                        帮助 patch 查找不精确的匹配
+                    </div>
+                    <div class="mdui-typo mdui-col-xs-12">
+                        <hr />
+                        <blockquote>
+<p>本文是对<a href="https://www.gnu.org/software/diffutils/manual/html_node/Inexact.html">这篇 diff 文档</a>的翻译</p>
+</blockquote>
+<p>对于上下文差异和长度较小的正常补丁，<code>patch</code> 可以检测 patch 中的行号何时是不正确的，并且会尝试找到应用每个 hunk 的正确位置。
+第一次尝试时，<code>patch</code> 会使用 hunk 的原有行号加上或减去应用先前的 hunk 产生的偏移。如果这不是正确的位置，<code>patch</code> 会分别向前向后扫描来寻找和 hunk 中的上下文匹配的位置。</p>
+<p>首先，<code>patch</code> 寻找上下文的所有行都能匹配上的位置。如果找不到这样的位置，并且 <code>patch</code> 读取的是上下文补丁或标准补丁，同时最大模糊参数（fuzz factor）被设置为大于等于1，
+则 <code>patch</code> 会进行下一次扫描。本次扫描时，忽略（即不包含）上下文部分的第一行和最后一行。如果依然找不到合适的位置，且模糊参数大于等于2，则进行下一次扫描，
+并忽略上下文的前两行和最后两行。如果依旧找不到且模糊参数更大，则会继续此过程。</p>
+<p><code>--fuzz=lines</code>(<code>-F lines</code>) 选项设置最大模糊参数为 <code>lines</code>。这个选项仅对有上下文的补丁和标准化补丁生效。<code>lines</code> 代表在搜索应用 hunk 的位置时最大忽略的上下文行数。
+注意，较大的模糊参数将会增加补丁应用出错的概率。默认的模糊参数为2。将其设置为超过 <code>diff</code> 上下文的值（一般为3）是没有意义的。</p>
+<p>如果 <code>patch</code> 找不到应用 hunk 的位置，则它会将无法应用的 hunk 写入对应的拒绝文件（.rej）文件。无论补丁是什么格式，拒绝文件都会以上下文格式写入无法应用的 hunk。
+拒绝文件中的行号与 patch 文件中的行号不同：它显示的是<code>patch</code>认为失败的 hunk 在新文件中的大致位置。</p>
+<p>如果使用了<code>--verbose</code>选项，那么 <code>patch</code> 将会在运行结束时给出一些关于失败和成果的更详细的信息。如果应用 hunk 失败了，则会打印出 <code>patch</code> 认为 hunk 在新文件中应该在哪一行。
+如果这与 diff 中指定的行号不一致，则会打印出偏移量。如果某个偏移量过大，则该 hunk 应用的位置可能是错误的。<code>patch</code> 还会指出它在应用时是否使用了模糊因子进行匹配。</p>
+
+                    </div>
+                    <!--CONTENT-->
+                </div>
+
+            </div>
+            <div class="mdui-col-xs-1 mdui-col-md-3"></div>
+
+        </div>
+    </div>
+    <div class="mdui-toolbar mdui-appbar-fixed mdui-appbar-scroll-hide mdui-color-white">
+        <a href="/" id="header-a" class="mdui-typo-headline mdui-ripple">Fel!xpace</a>
+        <div class="mdui-toolbar-spacer"></div>
+        <a href="/articles/关于.html" id="header-a" class="mdui-typo-headline mdui-ripple">ABOUT</a>
+    </div>
+    <div class="mdui-bottom-nav mdui-bottom-nav-scroll-hide mdui-container-fluid mdui-color-white">
+        <!--这里改用原设计-->
+        <!--还是用新设计好了-->
+        <div class="row mdui-col-xs-12">
+            <div class="mdui-col-xs-1 mdui-col-sm-4"></div>
+            <div id="footer" class="mdui-col-xs-10 mdui-col-sm-4 word-center">
+                "星の鼓動は愛" <img id="icon-bottom" src="https://jingfelix-ihs.oss-cn-beijing.aliyuncs.com/images/ico.png"
+                    alt=""> By jfelix 2022
+            </div>
+            <div class="mdui-col-xs-1 mdui-col-sm-4"></div>
+        </div>
+    </div>
+    <!-- MDUI JavaScript -->
+    <!--<script src="https://cdn.jsdelivr.net/npm/mdui@1.0.2/dist/js/mdui.min.js"></script>-->
+    <script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/mdui/1.0.2/js/mdui.min.js" type="application/javascript"></script>
+    <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/highlight.js/11.4.0/highlight.min.js" type="application/javascript"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+
+</html>
